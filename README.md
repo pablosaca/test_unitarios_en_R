@@ -4,6 +4,10 @@ Ejemplos de test unitarios en R usando el paquete `testthat`
 
 Para ejecutar los tests es necesario tener la estructura de carpetas en modo proyecto (desde la carpeta raíz)
 
+El proyecto contiene dos carpetas (y scripts):
+
+## functions/functions.R
+
 Se dispone de una serie de funciones que realizan varias tares como:
 
 - Recibir un vector de palabras y devuelvor el número de veces que cada palabra se repite en el vector de entrada así como el número de caracteres que tiene cada palabra
@@ -15,3 +19,6 @@ Se dispone de una serie de funciones que realizan varias tares como:
 - Imprimir aquellas palabras provenientes de una lista que empiecen por un carácter determinado
 
 
+## tests/tests.R
+
+Aplicación de los tests unitarios para las diferentes funciones

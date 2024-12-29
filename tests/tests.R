@@ -12,20 +12,20 @@ library(testthat)
 
 source("../functions/functions.R") # para  ejecutar los tests desde la funcionalidad propia de Rstudio (Run Tests)
 
-test_that("Tests Unitarios de la función count_word_details - Salida", {
-  
-  word_vec <- c("master", "formacion", "datos", "analitica", "aprendizaje", "estadistica")
-  expect_error(count_word_details(c()), "La entrada de la función debe ser una lista")
-  
-  word_list <- list("master", "formacion", "datos", "analitica", "aprendizaje", "estadistica")
-  output <- count_word_details(word_list)
-  
-  expect_is(output, "data.frame") # chequeo la salida es un dataframe
-  expect_equal(ncol(output), 2)  # chequeamos el número de columnas
-  expect_equal(nrow(output), 6)  # chequeamos el número de filas
-  expect_named(output, c("n_cocurrencia_palabra", "n_caracteres_palabra")) # chequeamos el nombre del dataframe
-}
-)
+  test_that("Tests Unitarios de la función count_word_details - Salida", {
+    
+    word_vec <- c("master", "formacion", "datos", "analitica", "aprendizaje", "estadistica")
+    expect_error(count_word_details(word_vec), "La entrada de la función debe ser una lista")
+    
+    word_list <- list("master", "formacion", "datos", "analitica", "aprendizaje", "estadistica")
+    output <- count_word_details(word_list)
+    
+    expect_is(output, "data.frame") # chequeo la salida es un dataframe
+    expect_equal(ncol(output), 2)  # chequeamos el número de columnas
+    expect_equal(nrow(output), 6)  # chequeamos el número de filas
+    expect_named(output, c("n_cocurrencia_palabra", "n_caracteres_palabra")) # chequeamos el nombre del dataframe
+  }
+  )
 
 test_that("Tests Unitarios de la función impar-par", {
   

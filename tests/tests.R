@@ -6,12 +6,19 @@
 
 library(testthat)
 
-source("../functions/functions.R")
+# path <- getwd()
+# final_path <- paste0(path, "/functions/functions.R")
+# source(final_path) # para ejecutar los tests como si fuese un script (se necesita disponer de la ruta)
+
+source("../functions/functions.R") # para  ejecutar los tests desde la funcionalidad propia de Rstudio (Run Tests)
 
 test_that("Tests Unitarios de la función count_word_details - Salida", {
   
   word_vec <- c("master", "formacion", "datos", "analitica", "aprendizaje", "estadistica")
-  output <- count_word_details(word_vec)
+  expect_error(count_word_details(c()), "La entrada de la función debe ser una lista")
+  
+  word_list <- list("master", "formacion", "datos", "analitica", "aprendizaje", "estadistica")
+  output <- count_word_details(word_list)
   
   expect_is(output, "data.frame") # chequeo la salida es un dataframe
   expect_equal(ncol(output), 2)  # chequeamos el número de columnas

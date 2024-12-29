@@ -3,14 +3,19 @@
 # ****************************************************************************
 
 
-count_word_details <- function(word_vec){
+count_word_details <- function(input_){
   
-  word_count <- table(word_vec) # con una tabla de frecuencias podemos contar las veces que un elemento se repite en un vector
+  if (!is.list(input_)){
+    stop(paste0("La entrada de la función debe ser una lista"))
+  }
+  
+  input_ <- unlist(input_)   # conversión de la lista a vector
+  word_count <- table(input_) # con una tabla de frecuencias podemos contar las veces que un elemento se repite en un vector
   
   letter_reporting_vec <- c() # se genera un vector para ir incorporando el número de letras que tiene la palabra
   concurrence_reporting_vec <- c() # se genera un vector para ir incorporando el número de concurrencias de la palabra en el vector
   for (word in names(word_count)) {
-    word_length <- nchar(word) # cuenta letra de cada palabra
+    word_length <- nchar(word) # cuenta longitud de cada palabra
     letter_reporting_vec[word] <- word_length # se añade al vector el número de letras que tiene la palabra (similar a diccionario de python incluyendo la palabra como key)
     concurrence_reporting_vec[word] = word_count[word] # se añade al vector el número de veces que aparece la palabra en la secuencia a analizar (similar a diccionario de python incluyendo la palabra como key)
   }
@@ -47,9 +52,9 @@ cummulative_impar_number <- function(input_){
   }
   
   cum_number_vec <- c() # vector donde se va a obtener la suma acumulada
-  # iteramos sobre las posiciones de la lista (por eos )
+  # iteramos sobre las posiciones de la lista
   for (i in 1:length(input_)){
-    value <- impar_number(input_[[i]]) # chequea si el número es par o impar
+      value <- impar_number(input_[[i]]) # chequea si el número es par o impar
     cum_number_vec[i] <- value # incluimos los valores en el vector acumulado
   }
   return(sum(cum_number_vec)) # suma de los vectores
@@ -129,9 +134,9 @@ word_starts_with_character <- function(word, character){
   
   # se extrae la primera letra de la palabra y se compara con la letra indicada
   if (substr(word, 1, 1) == character) {
-    print(word)
     return(word)
-  } else return("")
+    } 
+  else return("")
 }
 
 

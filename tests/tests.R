@@ -39,7 +39,7 @@ test_that("Tests Unitarios de la función impar-par", {
 
 test_that("Tests Unitarios de la función cummulative_impar_number", {
   
-  expect_error(cummulative_impar_number(c(15, 3, 10)), "La entrada de la función debe ser una lista")
+    expect_error(cummulative_impar_number(c(15, 3, 10)), "La entrada de la función debe ser una lista")
   expect_error(cummulative_impar_number(10), "La entrada de la función debe ser una lista")
   expect_error(
     cummulative_impar_number(
@@ -89,13 +89,13 @@ test_that("Tests Unitarios de la función cummulative_string", {
 
 test_that("Tests Unitarios de la función character_to_lower_letter", {
   
-  expect_error(character_to_lower_letter(5), "El input determinado para analizar la palabra debe un string")
-  expect_error(character_to_lower_letter(""), "El string debe tener una caracter. El input es un string vacío")
-  expect_error(character_to_lower_letter("pablo"), "Debes devolver una sola letra. Has devuelto: pablo")
-  
-  expect_is(character_to_lower_letter("a"), "character") # chequeo la salida es un string
-  expect_true(character_to_lower_letter("p") == "p")
-  expect_false(character_to_lower_letter("p") == "P") # esto solo es igual si le pasamos el tolower
+  expect_error(check_user_character(5), "El input determinado para analizar la palabra debe un string")
+  expect_error(check_user_character(""), "El string debe tener un carácter. El input es un string vacío")
+  expect_error(check_user_character("pablo"), "Debes devolver una sola letra. Has devuelto: pablo")
+
+  expect_is(check_user_character("a"), "character") # chequeo la salida es un string
+  expect_true(check_user_character("p") == "p")
+  expect_false(check_user_character("p") == "P") # esto solo es igual si le pasamos el tolower
 }
 )
 
@@ -117,7 +117,7 @@ test_that("Tests Unitarios de la función filter_words_by_starting_character", {
   words_list <- list("master", "formacion", "uned", "analisis", "datos", "analitica")
   
   expect_is(filter_words_by_starting_character(words_list, "a"), "character") # chequeo la salida es un string
-  expect_true(filter_words_by_starting_character(words_list, "p") == "No hay ninguna palabra que comience por p") # no hay palabras que empiecen por
+  expect_true(filter_words_by_starting_character(words_list, "p") == "No hay ninguna palabra que comience por p") # no hay palabras que empiecen por p
   expect_true(filter_words_by_starting_character(words_list, "A") == "Hay 2 palabras que comienzan por A: analisis, analitica")
 }
 )
